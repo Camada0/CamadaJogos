@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Retrô</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #12121a;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #f8f8f2;
+    }
+
+    /* Barra de busca e filtros */
+    .controles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 800px;
+      margin: 0 auto 24px auto;
+    }
+
+    .controles input,
+    .controles select {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #2e2e42;
+      background-color: #1e1e2e;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .controles input {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* Grade responsiva de jogos */
+    .grid-jogos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Card individual */
+    .jogo-card {
+      display: flex;
+      flex-direction: column;
+      background-color: #1e1e2e;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #2a2a3d;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .jogo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+      border-color: #6272a4;
+    }
+
+    /* PADRONIZAÇÃO DAS CAPAS COM FUNDO DINÂMICO */
+    .jogo-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;     /* Mantém o card perfeitamente quadrado */
+      object-fit: contain;     /* Mostra a imagem inteira sem cortar nenhuma borda */
+      background-color: #12121a; /* Deixa o fundo das tarjas idêntico ao fundo do site, sumindo com o quadrado preto */
+      display: block;
+    }
+
+    .jogo-info {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .jogo-titulo {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .jogo-console {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #bd93f9;
+      background-color: rgba(189, 147, 249, 0.12);
+      padding: 4px 8px;
+      border-radius: 6px;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎮 Biblioteca Retrô</h1>
+  </header>
+
+  <div class="controles">
+    <input type="text" id="busca" placeholder="Buscar jogo...">
+    <select id="filtro-console">
+      <option value="todos">Todos os Consoles</option>
+    </select>
+  </div>
+
+  <main class="grid-jogos" id="lista-jogos"></main>
+
+  <script>
+    let todosJogos = [];
+
+    async function carregarJogos() {
+      try {
+        const resposta = await fetch('jogos.json');
+        todosJogos = await resposta.json();
+        popularFiltroConsoles(todosJogos);
+        renderizarJogos(todosJogos);
+      } catch (erro) {
+        console.error('Erro ao carregar jogos.json:', erro);
+        document.getElementById('lista-jogos').innerHTML = '<p>Erro ao carregar o catálogo.</p>';
+      }
+    }
+
+    function popularFiltroConsoles(jogos) {
+      const select = document.getElementById('filtro-console');
+      const consolesUnicos = [...new Set(jogos.map(j => j.console))];
+
+      consolesUnicos.forEach(consoleNome => {
+        const option = document.createElement('option');
+        option.value = consoleNome;
+        option.textContent = consoleNome;
+        select.appendChild(option);
+      });
+    }
+
+    function renderizarJogos(jogos) {
+      const container = document.getElementById('lista-jogos');
+      container.innerHTML = '';
+
+      if (jogos.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #888;">Nenhum jogo encontrado.</p>';
+        return;
+      }
+
+      jogos.forEach(jogo => {
+        const card = document.createElement('a');
+        card.className = 'jogo-card';
+        card.href = `play.html?id=${encodeURIComponent(jogo.id)}`;
+
+        card.innerHTML = `
+          <img src="${jogo.capa}" alt="${jogo.titulo}" loading="lazy">
+          <div class="jogo-info">
+            <div class="jogo-titulo">${jogo.titulo}</div>
+            <span class="jogo-console">${jogo.console}</span>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function filtrar() {
+      const termo = document.getElementById('busca').value.toLowerCase();
+      const consoleSelecionado = document.getElementById('filtro-console').value;
+
+      const filtrados = todosJogos.filter(jogo => {
+        const bateNome = jogo.titulo.toLowerCase().includes(termo);
+        const bateConsole = consoleSelecionado === 'todos' || jogo.console === consoleSelecionado;
+        return bateNome && bateConsole;
+      });
+
+      renderizarJogos(filtrados);
+    }
+
+    document.getElementById('busca').addEventListener('input', filtrar);
+    document.getElementById('filtro-console').addEventListener('change', filtrar);
+
+    carregarJogos();
+  </script>
+
+</body>
+</html>

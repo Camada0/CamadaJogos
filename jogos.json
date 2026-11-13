@@ -1,0 +1,140 @@
+[
+  {
+    "id": "pokemon-red",
+    "titulo": "Pokémon Red",
+    "console": "Game Boy",
+    "core": "gb",
+    "rom": "roms/pokemon-red.gb",
+    "capa": "capas/pokemon-red.jpg"
+  },
+  {
+    "id": "zelda-minish-cap",
+    "titulo": "The Legend of Zelda: The Minish Cap",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/zelda-minish-cap.gba",
+    "capa": "capas/zelda-minish-cap.jpg"
+  },
+  {
+    "id": "super-mario-world",
+    "titulo": "Super Mario World",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/super-mario-world.smc",
+    "capa": "capas/mario-world.jpg"
+  },
+  {
+    "id": "sonic-2",
+    "titulo": "Sonic The Hedgehog 2",
+    "console": "Mega Drive",
+    "core": "segaMD",
+    "rom": "roms/sonic2.md",
+    "capa": "capas/sonic2.jpg"
+  },
+  {
+    "id": "castlevania-aria-of-sorrow",
+    "titulo": "Castlevania: Aria of Sorrow",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/castlevania-aria.gba",
+    "capa": "capas/castlevania-aria.jpg"
+  },
+  {
+    "id": "metroid-fusion",
+    "titulo": "Metroid Fusion",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/metroid-fusion.gba",
+    "capa": "capas/metroid-fusion.jpg"
+  },
+  {
+    "id": "mario-luigi-superstar-saga",
+    "titulo": "Mario & Luigi: Superstar Saga",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/mario-luigi-superstar-saga.gba",
+    "capa": "capas/mario-luigi-superstar-saga.jpg"
+  },
+  {
+    "id": "advance-wars",
+    "titulo": "Advance Wars",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/advance-wars.gba",
+    "capa": "capas/advance-wars.jpg"
+  },
+  {
+    "id": "zelda-a-link-to-the-past",
+    "titulo": "The Legend of Zelda: A Link to the Past",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/zelda-a-link-to-the-past.smc",
+    "capa": "capas/zelda-a-link-to-the-past.jpg"
+  },
+  {
+    "id": "chrono-trigger",
+    "titulo": "Chrono Trigger",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/chrono-trigger.smc",
+    "capa": "capas/chrono-trigger.jpg"
+  },
+  {
+    "id": "super-metroid",
+    "titulo": "Super Metroid",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/super-metroid.smc",
+    "capa": "capas/super-metroid.jpg"
+  },
+  {
+    "id": "street-fighter-2-turbo",
+    "titulo": "Street Fighter II Turbo: Hyper Fighting",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/street-fighter-2-turbo.smc",
+    "capa": "capas/street-fighter-2-turbo.jpg"
+  },
+  {
+    "id": "mega-man-x",
+    "titulo": "Mega Man X",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/mega-man-x.smc",
+    "capa": "capas/mega-man-x.jpg"
+  },
+  {
+    "id": "super-mario-kart",
+    "titulo": "Super Mario Kart",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/super-mario-kart.smc",
+    "capa": "capas/super-mario-kart.jpg"
+  },
+  {
+    "id": "castlevania-dracula-x",
+    "titulo": "Castlevania: Dracula X",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/castlevania-dracula-x.smc",
+    "capa": "capas/castlevania-dracula-x.jpg"
+  },
+  {
+    "id": "secret-of-mana",
+    "titulo": "Secret of Mana",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/secret-of-mana.smc",
+    "capa": "capas/secret-of-mana.jpg"
+  },
+  {
+    "id": "goof-troop",
+    "titulo": "Goof Troop",
+    "console": "Super Nintendo",
+    "core": "snes",
+    "rom": "roms/goof-troop.smc",
+    "capa": "capas/goof-troop.jpg"
+  }
+
+
+]

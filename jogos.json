@@ -134,6 +134,14 @@
     "core": "snes",
     "rom": "roms/goof-troop.smc",
     "capa": "capas/goof-troop.jpg"
+  },
+  {
+    "id": "Final-Fantasy-VI",
+    "titulo": "Final Fantasy VI",
+    "console": "Game Boy Advance",
+    "core": "gba",
+    "rom": "roms/final-fantasy-vi.gba",
+    "capa": "capas/final-fantasy-vi.jpg"
   }
 
 
